@@ -14,7 +14,7 @@ FLAGS    := -Wall -Wextra -Werror
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS := main.c \
+SRCS := window.c map.c \
         get_next_line/get_next_line.c \
         get_next_line/get_next_line_utils.c \
 

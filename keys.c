@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 16:42:58 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/05 14:29:49 by soksak           ###   ########.fr       */
+/*   Created: 2024/01/04 16:27:55 by soksak            #+#    #+#             */
+/*   Updated: 2024/01/04 16:28:23 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
-int main(int argc, char **argv)
+int	deal_key(int key_code, t_state *screen)
 {
-	if (argc == 2)
+	if (key_code == 53)
 	{
-		read_map(argv[1]);
+		mlx_destroy_window(screen->mlx, screen->win);
+		free(screen->img_paths);
+		free(screen);
+		exit(0);
 	}
-	else
-		write(1, "Usage : ./so_long <map_location>", 32);
+	return (0);
 }
