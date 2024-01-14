@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 16:27:55 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/04 16:28:23 by soksak           ###   ########.fr       */
+/*   Created: 2024/01/14 04:34:27 by soksak            #+#    #+#             */
+/*   Updated: 2024/01/14 04:35:07 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "so_long.h"
 
-int	deal_key(int key_code, t_state *screen)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (key_code == 53)
+	char	c;
+
+	if (n == -2147483648)
 	{
-		mlx_destroy_window(screen->mlx, screen->win);
-		free(screen->img_paths);
-		free(screen);
-		exit(0);
+		write(1, "-2147483648", 11);
 	}
-	return (0);
+	else if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+		ft_putnbr_fd(n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		c = '0' + n;
+
+		write(1, &c, 1);
+	}
 }
