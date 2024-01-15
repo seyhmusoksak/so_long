@@ -6,13 +6,13 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 01:07:37 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:22:43 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 15:27:45 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	valid_map(char **map, int x, int y)
+static void	valid_map(char **map, int x, int y)
 {
 	if (y < 1 || x >= (strlen_y(map) - 1) || x < 1
 		|| y >= (int)ft_strlen(map[0]) || map[x][y] == '1' ||
@@ -58,7 +58,7 @@ void	arg_check(char *arg)
 	extension_check(arg);
 }
 
-void	access_check(char **map)
+static void	access_check(char **map)
 {
 	int	i;
 	int	j;
@@ -80,25 +80,26 @@ void	access_check(char **map)
 
 void	mapcheck(t_state *data)
 {
-	char	**checkmap;
+	char	**map;
 	int		i;
 
 	i = -1;
-	checkmap = malloc (sizeof(char *) * (data->y + 1));
-	if (!checkmap)
+	map = malloc (sizeof(char *) * (data->y + 1));
+	if (!map)
 		exit (0);
 	while (data->map[++i])
-		checkmap[i] = ft_strdup(data->map[i]);
-	checkmap[i] = 0;
-	check_map_chars(checkmap);
-	check_player (data, checkmap);
-	check_exit (data, checkmap);
-	col_check(data, checkmap);
-	is_closed_map (checkmap);
-	valid_map (checkmap, data->player[0], data->player[1]);
-	access_check (checkmap);
+		map[i] = ft_strdup(data->map[i]);
+	map[i] = 0;
+	check_map_chars(map);
+	check_player (data, map);
+	check_exit (data, map);
+	col_check(data, map);
+	is_closed_map (map);
+	rectangular_check(map);
+	valid_map (map, data->player[0], data->player[1]);
+	access_check (map);
 	i = 0;
-	while (checkmap[i])
-		free (checkmap[i++]);
-	free (checkmap);
+	while (map[i])
+		free (map[i++]);
+	free (map);
 }

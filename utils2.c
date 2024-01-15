@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:34:27 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:35:07 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 15:34:40 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,27 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 	{
 		c = '0' + n;
-
 		write(1, &c, 1);
+	}
+}
+
+void	rectangular_check(char **map)
+{
+	int		len;
+	int		i;
+	int		x;
+
+	len = 0;
+	while (map[0][len] != '\n' && map[0][len])
+		len++;
+	i = 0;
+	while (map[i])
+	{
+		x = 0;
+		while (map[i][x] != '\n' && map[i][x])
+			x++;
+		if (len != x)
+			free_map(map, "The map isn't rectangular!");
+		i++;
 	}
 }

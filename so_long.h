@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 21:00:14 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:33:11 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 15:27:21 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "mlx/mlx.h"
-# include "get_next_line/get_next_line.h"
+# include "gnl/get_next_line.h"
 
 typedef struct s_xpm
 {
@@ -43,12 +43,8 @@ typedef struct s_state
 	void		*win;
 }	t_state;
 
-// Move Func.
+// Hook
 int		deal_key(int key_code, t_state *screen);
-void	move_up(t_state *data);
-void	move_down(t_state *data);
-void	move_left(t_state *data);
-void	move_right(t_state *data);
 
 // Map Func.
 void	map_cord(char *map, t_state *data);
@@ -64,10 +60,7 @@ void	check_exit(t_state *data, char **map);
 void	col_check(t_state *data, char **map);
 void	is_closed_map(char **map);
 void	mapcheck(t_state *data);
-void	access_check(char **map);
 void	arg_check(char *arg);
-void	valid_map(char **map, int x, int y);
-void	mapcheck(t_state *data);
 
 //Utils
 
@@ -77,5 +70,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	free_map(char **map, char *msg);
 int		strlen_y(char **str);
 void	ft_error(char *msg);
+void	rectangular_check(char **map);
 
 #endif

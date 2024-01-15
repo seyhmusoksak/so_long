@@ -6,16 +6,20 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:27:55 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:29:02 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 11:29:15 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_state *data)
+static void	move_up(t_state *data)
 {
 	if (data->map[data->player[0] - 1][data->player[1]] != '1')
 	{
+		data->movement++;
+		write(1, "Your Movement = ", 16);
+		ft_putnbr_fd(data->movement, 1);
+		write(1, "\n", 1);
 		if (data->map[data->player[0] - 1][data->player[1]] == 'C')
 			data->collectiables--;
 		if (data->map[data->player[0] - 1][data->player[1]] == 'E' &&
@@ -24,10 +28,6 @@ void	move_up(t_state *data)
 			write(1, "YOU WON THE GAME, SEE YOU!", 26);
 			exit(0);
 		}
-		data->movement++;
-		write(1, "Your Movement = ", 16);
-		ft_putnbr_fd(data->movement, 1);
-		write(1, "\n", 1);
 		mlx_clear_window(data->mlx, data->win);
 		data->map[data->player[0]][data->player[1]] = '0';
 		data->map[data->player[0] - 1][data->player[1]] = '0';
@@ -37,10 +37,14 @@ void	move_up(t_state *data)
 	}
 }
 
-void	move_down(t_state *data)
+static void	move_down(t_state *data)
 {
 	if (data->map[data->player[0] + 1][data->player[1]] != '1')
 	{
+		data->movement++;
+		write(1, "Your Movement = ", 16);
+		ft_putnbr_fd(data->movement, 1);
+		write(1, "\n", 1);
 		if (data->map[data->player[0] + 1][data->player[1]] == 'C')
 			data->collectiables--;
 		if (data->map[data->player[0] + 1][data->player[1]] == 'E' &&
@@ -49,10 +53,6 @@ void	move_down(t_state *data)
 			write(1, "YOU WON THE GAME, SEE YOU!", 26);
 			exit(0);
 		}
-		data->movement++;
-		write(1, "Your Movement = ", 16);
-		ft_putnbr_fd(data->movement, 1);
-		write(1, "\n", 1);
 		mlx_clear_window(data->mlx, data->win);
 		data->map[data->player[0]][data->player[1]] = '0';
 		data->map[data->player[0] + 1][data->player[1]] = '0';
@@ -62,10 +62,14 @@ void	move_down(t_state *data)
 	}
 }
 
-void	move_left(t_state *data)
+static void	move_left(t_state *data)
 {
 	if (data->map[data->player[0]][data->player[1] - 1] != '1')
 	{
+		data->movement++;
+		write(1, "Your Movement = ", 16);
+		ft_putnbr_fd(data->movement, 1);
+		write(1, "\n", 1);
 		if (data->map[data->player[0]][data->player[1] - 1] == 'C')
 			data->collectiables--;
 		if (data->map[data->player[0]][data->player[1] - 1] == 'E' &&
@@ -74,10 +78,6 @@ void	move_left(t_state *data)
 			write(1, "YOU WON THE GAME, SEE YOU!", 26);
 			exit(0);
 		}
-		data->movement++;
-		write(1, "Your Movement = ", 16);
-		ft_putnbr_fd(data->movement, 1);
-		write(1, "\n", 1);
 		mlx_clear_window(data->mlx, data->win);
 		data->map[data->player[0]][data->player[1]] = '0';
 		data->map[data->player[0]][data->player[1] - 1] = '0';
@@ -87,10 +87,14 @@ void	move_left(t_state *data)
 	}
 }
 
-void	move_right(t_state *data)
+static void	move_right(t_state *data)
 {
 	if (data->map[data->player[0]][data->player[1] + 1] != '1')
 	{
+		data->movement++;
+		write(1, "Your Movement = ", 16);
+		ft_putnbr_fd(data->movement, 1);
+		write(1, "\n", 1);
 		if (data->map[data->player[0]][data->player[1] + 1] == 'C')
 			data->collectiables--;
 		if (data->map[data->player[0]][data->player[1] + 1] == 'E' &&
@@ -99,10 +103,6 @@ void	move_right(t_state *data)
 			write(1, "YOU WON THE GAME, SEE YOU!", 26);
 			exit(0);
 		}
-		data->movement++;
-		write(1, "Your Movement = ", 16);
-		ft_putnbr_fd(data->movement, 1);
-		write(1, "\n", 1);
 		mlx_clear_window(data->mlx, data->win);
 		data->map[data->player[0]][data->player[1]] = '0';
 		data->map[data->player[0]][data->player[1] + 1] = '0';
@@ -137,4 +137,3 @@ int	deal_key(int key_code, t_state *data)
 	put_map(data);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 05:22:44 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:19:28 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 04:44:47 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	map_cord(char *map, t_state *data)
 	data->x = x;
 	close(fd);
 }
-
 
 void	read_map(t_state *data, char *map)
 {
@@ -85,7 +84,6 @@ void	assign_image(t_state *data)
 
 void	put_image(t_state *data, char **map, int i, int j)
 {
-
 	if (map[i][j] == '1')
 		mlx_put_image_to_window(data->mlx, data->win, data->img_paths->img_1,
 			j * 64, i * 64);

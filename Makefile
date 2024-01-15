@@ -1,7 +1,7 @@
 NAME = so_long
 SRCS = so_long.c map_check.c move.c utils.c check.c map.c utils2.c \
-		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
 
 MINILIBX = ./mlx/libmlx.a
 CC=gcc

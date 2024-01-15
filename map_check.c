@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 04:44:41 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:13:09 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 04:44:28 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	check_exit(t_state *data, char **map)
 	if (exit_count == 0)
 		free_map(map, "There isn't any exit in the map.");
 }
-
 
 void	col_check(t_state *data, char **map)
 {

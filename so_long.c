@@ -6,12 +6,18 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 01:42:47 by soksak            #+#    #+#             */
-/*   Updated: 2024/01/14 04:24:44 by soksak           ###   ########.fr       */
+/*   Updated: 2024/01/14 11:24:10 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "stdio.h"
+
+static int	close_window(t_state *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	exit(0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +37,7 @@ int	main(int argc, char **argv)
 		assign_image(data);
 		put_map(data);
 		mlx_key_hook(data->win, deal_key, data);
+		mlx_hook(data->win, 17, 0, close_window, data);
 		mlx_loop(data->mlx);
 	}
 	else
